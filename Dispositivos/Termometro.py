@@ -21,12 +21,13 @@ class Termometro(Dispositivo):
         - timestampTemperaturaAtual (datetime): O timestamp da última medição de temperatura.
     """
 
-    def __init__(self, escala: str = "C", chanceOutlier: int = 5, temperaturaLimite: int = 50) -> None:
+    def __init__(self, token : str, escala: str = "C", chanceOutlier: int = 5, temperaturaLimite: int = 50) -> None:
         """
         Inicializador da classe de termômetro.
 
         Parâmetros
         ----------
+            - token (str): Token do dispositivo no TagoIO
             - escala (str): A escala de temperatura utilizada
                 Padrão = Celsius ("C")
             - chanceOutlier (int): A probabilidade de gerar um outlier
@@ -34,7 +35,6 @@ class Termometro(Dispositivo):
             - temperaturaLimite (int): A temperatura limite para considerar um outlier
                 Padrão = 50.
         """
-        token = "e5c937f2-164b-46a1-958c-a2eb2171d75c"
         self.temperaturaLimite = temperaturaLimite
         self.chanceOutlier = chanceOutlier
         self.escala = escala 
