@@ -62,11 +62,11 @@ class Termometro(Dispositivo):
         temperaturaMedida = self.temperaturaAtual + diferenca
         timestampTemperaturaMedida = datetime.now()
         if not self.outlier(temperaturaMedida=temperaturaMedida, timestampTemperaturaMedida=timestampTemperaturaMedida):
-            self.temperaturaAtual = round(temperaturaMedida, 2)
+            self.temperaturaAtual = temperaturaMedida
             self.timestampTemperaturaAtual = timestampTemperaturaMedida
             return {
                 'variable': 'Temperatura',
-                'value': self.temperaturaAtual, 
+                'value': round(self.temperaturaAtual, 2), 
                 'unit': self.escala, 
                 'time': self.timestampTemperaturaAtual.strftime("%Y-%m-%d, %H:%M:%S")
             }
