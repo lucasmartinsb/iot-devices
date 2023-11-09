@@ -34,9 +34,6 @@ class Dispositivo():
             dict: O resultado do envio dos dados.
             str: Um texto do erro gerado pelo envio 
                 (os dados continuam armazenados na fila)
-
-        Lança:
-            Exception: Se ocorrer um erro durante o envio dos dados.
         """
         dispositivo = Device({"token": self.token})
         self.fila.append(dados)
