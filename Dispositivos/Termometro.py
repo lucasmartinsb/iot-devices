@@ -101,12 +101,12 @@ class Termometro(Dispositivo):
         -------
             bool: True se for um outlier, False caso contrário.
                 É considerado outlier quando a temperatura medida é maior que a temperatura limite do termômetro
-                ou quando a diferença de temperatura entre a medição atual e anterior é maior que a diferença de tempo em segundos.
+                ou quando a diferença de temperatura entre a medição atual e anterior é maior que a (diferença de tempo em segundos)/6.
         """
         if temperaturaMedida > self.temperaturaLimite:
             return True
         diferencaTemperatura = abs(self.temperaturaAtual - temperaturaMedida)
-        diferencaTempo = (timestampTemperaturaMedida - self.timestampTemperaturaAtual).total_seconds()
+        diferencaTempo = (timestampTemperaturaMedida - self.timestampTemperaturaAtual).total_seconds() / 6
         if diferencaTemperatura > diferencaTempo:
             return True
         else:
