@@ -3,7 +3,7 @@ from Dispositivos.Dispositivo import Dispositivo
 from random import uniform, randint
 
 class Termometro(Dispositivo):
-    def __init__(self, escala : str = "c") -> None:
+    def __init__(self, escala : str = "C") -> None:
         token = "e5c937f2-164b-46a1-958c-a2eb2171d75c"
         self.temperaturaLimite = 50
         self.chanceOutlier = 5
@@ -17,12 +17,13 @@ class Termometro(Dispositivo):
         temperaturaMedida = self.temperaturaAtual + diferenca
         timestampTemperaturaMedida = datetime.now()
         if not self.outlier(temperaturaMedida=temperaturaMedida, timestampTemperaturaMedida=timestampTemperaturaMedida):
-            self.temperaturaAtual = temperaturaMedida
+            self.temperaturaAtual = round(temperaturaMedida, 2)
             self.timestampTemperaturaAtual = timestampTemperaturaMedida
             return {
-                'Temperatura' : self.temperaturaAtual, 
-                'Escala' : self.escala, 
-                'Timestamp' : self.timestampTemperaturaAtual.strftime("%m/%d/%Y, %H:%M:%S")
+                'variable' : 'Temperatura',
+                'value' : self.temperaturaAtual, 
+                'unit' : self.escala, 
+                'time' : self.timestampTemperaturaAtual.strftime("%Y-%m-%d, %H:%M:%S")
             }
         else:
             raise Exception("Erro ao medir temperatura!")
@@ -38,7 +39,7 @@ class Termometro(Dispositivo):
         if temperaturaMedida > self.temperaturaLimite:
             return True
         diferencaTemperatura = abs(self.temperaturaAtual - temperaturaMedida)
-        diferencaTempo = (timestampTemperaturaMedida - self.timestampTemperaturaAtual).total_seconds() / 60
+        diferencaTempo = (timestampTemperaturaMedida - self.timestampTemperaturaAtual).total_seconds()
         if diferencaTemperatura > diferencaTempo:
             return True
         else:
