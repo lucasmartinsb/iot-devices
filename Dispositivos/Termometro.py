@@ -7,7 +7,7 @@ class Termometro(Dispositivo):
     Simula um termômetro digital.
 
     Herda da classe Dispositivo e representa um termômetro que gera
-    dados de temperatura em uma escala específica.
+    dados simulados de temperatura em uma escala específica.
 
     Atributos
     ---------
