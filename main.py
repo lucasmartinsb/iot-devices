@@ -56,7 +56,7 @@ if __name__ == '__main__':
     processoTermometro = Process(target=geraDadosTermometro, args=(termometro, 10))
     processoSensorMovimento = Process(target=geraDadosSensorMovimento, args=(sensorMovimento, 10))
     processoAgua = Process(target=geraDadosSensorAgua, args=(sensorAgua, 10))
-    processoSensorUmidade = Process(target=geraDadosSensorUmidade, args=(sensorUmidade, 1))
+    processoSensorUmidade = Process(target=geraDadosSensorUmidade, args=(sensorUmidade, 10))
 
     processoTermometro.start()
     processoSensorMovimento.start()
