@@ -95,11 +95,14 @@ class SensorAgua(Dispositivo):
         Retorna
         -------
             bool: True se for um outlier, False caso contrário.
-                É considerado outlier quando o nível de água medido é maior que o nível máximo do sensor ou menor que 0.
+                É considerado outlier quando a diferença entre o nível medido com o atual é maior que o nível máximo ou o valor medido é menor que 0.
         """
-        if nivelMedido > self.nivelMaximo:
+        if nivelMedido - self.nivelAtual > self.nivelMaximo:
             return True
         if nivelMedido < 0:
             return True
+        if nivelMedido > self.nivelMaximo:
+            self.nivelAtual = 0
+            return False
         else:
             return False
