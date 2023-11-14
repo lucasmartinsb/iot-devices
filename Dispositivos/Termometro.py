@@ -58,7 +58,7 @@ class Termometro(Dispositivo):
         -----
             Exception: Se ocorrer um erro ao medir a temperatura (quando há algum outlier).
         """
-        diferenca = uniform(0, 1) + self.criaOutlier()
+        diferenca = uniform(-1, 1) + self.criaOutlier()
         temperaturaMedida = self.temperaturaAtual + diferenca
         timestampTemperaturaMedida = datetime.now()
         if not self.outlier(temperaturaMedida=temperaturaMedida, timestampTemperaturaMedida=timestampTemperaturaMedida):
