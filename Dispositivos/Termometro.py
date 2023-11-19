@@ -42,6 +42,8 @@ class Termometro(Dispositivo):
             self.temperaturaAtual = uniform(18.0, 24.0)
         elif escala == "F":
             self.temperaturaAtual = uniform(64, 75)
+        else:
+            self.temperaturaAtual = uniform(18.0, 24.0)
         self.timestampTemperaturaAtual = datetime.now()
         super().__init__(token=token)
     
