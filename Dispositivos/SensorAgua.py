@@ -101,9 +101,11 @@ class SensorAgua(Dispositivo):
             return True
         if nivelMedido < 0:
             self.nivelAtual = self.nivelMaximo//2
+            self.timestampNivelAtual = datetime.now()
             return True
         if nivelMedido > self.nivelMaximo:
             self.nivelAtual = self.nivelMaximo//2
+            self.timestampNivelAtual = datetime.now()
             return True
         else:
             return False

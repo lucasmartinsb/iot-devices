@@ -87,6 +87,8 @@ class SensorUmidade(Dispositivo):
                 É considerado outlier quando a umidade medida é menor que 0 ou maior que 100.
         """
         if umidadeMedida < 0 or umidadeMedida > 100:
+            self.umidadeAtual = uniform(10, 90)
+            self.timestampUmidadeAtual = datetime.now()
             return True
         else:
             return False
