@@ -100,10 +100,10 @@ class SensorAgua(Dispositivo):
         if nivelMedido - self.nivelAtual > self.nivelMaximo:
             return True
         if nivelMedido < 0:
-            self.nivelAtual = 50
+            self.nivelAtual = self.nivelMaximo//2
             return True
         if nivelMedido > self.nivelMaximo:
-            self.nivelAtual = 0
+            self.nivelAtual = self.nivelMaximo//2
             return True
         else:
             return False
